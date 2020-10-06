@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+Nouveau Tache
+{% endblock %}
+{% block navtitle %}
+Nouveau Tache
+{% endblock %}
+{% block content%}
+{% block header %}
+{% if messages %}
+{% for message in messages %}
+<h3>{{message}}</h3>
+{% endfor %}
+{% endif %}
+<form action="task" method="POST">
+{% csrf_token %}
+{{ form }}
+<button type="submit">
+Sauvegarder
+</button>
+</form>
+{% endblock %}
+{% endblock %}

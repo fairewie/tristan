@@ -1,0 +1,42 @@
+<!doctype html>
+
+{% load static %}
+
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <title>
+        {% block title %}{% endblock %}
+    </title>
+    {% block metas %}
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% endblock %}
+    {% block styles %}
+    <link rel="stylesheet" href="{% static '/node_modules/bootstrap/dist/css/bootstrap.min.css' %}">
+    {% endblock %}
+</head>
+
+<body>
+    {% block nav %}
+    <nav class="navbar navbar-dark bg-primary">
+        <h1>Le Modele Avec la BD</h1>
+        <a type="button" class="nav-link btn btn-info" href="/LeModele/userlisting">Liste d'utilisateur</a>
+        <a type="button" class="nav-link btn btn-info" href="/LeModele/listing">Liste des taches</a>
+        <a type="button" class="nav-link btn btn-success" href="/LeModele/user">Nouvelle utilisateur</a>
+        <a type="button" class="nav-link btn btn-success" href="/LeModele/task">Nouvelle tache</a>
+    </nav>
+    {% endblock %}
+    <main role="main" class="container top-pushed">
+        <div class="jumbotron">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </main>
+    {% block js %}
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    {% endblock %}
+</body>
+
+</html>

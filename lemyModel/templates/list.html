@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}
+        Les Utilisateur
+{% endblock %}
+ {% block styles %}
+    {{ block.super }}
+     <link rel="stylesheet" 
+        href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" 
+        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" 
+        crossorigin="anonymous">
+{% endblock %}
+{% block content %}
+    <h1>Liste des utilisateur</h1>
+    <div class="d-flex justify-content-between">
+       <h2>Prénom</h2>
+       <h2>Nom</h2>
+       <h2>Parametre</h2>
+    </div>
+     {% for user in objects %}
+     <div class="d-flex justify-content-between">
+        <p>{{user.first_name}}</p>
+        <p>{{user.last_name}}</p>
+        <nav class="d-flex">
+         <a type="button" class="nav-link btn btn-warning" href="/LeModele/edit/{{user.id}}">edit</a>
+            <a type="button" class="nav-link btn btn-danger" href="/LeModele/del/{{user.id}}">delete</a>
+         </nav>
+         </div>
+    {% endfor %}
+
+    {% endblock %}

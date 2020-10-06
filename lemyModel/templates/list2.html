@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+    {% block title %}
+        Les Tâches
+    {% endblock %}
+
+    {% block styles %}
+        {{ block.super }}
+        <link rel="stylesheet" 
+            href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" 
+            integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" 
+            crossorigin="anonymous">
+    {% endblock %}
+
+    {% block content %}
+    <h1>Liste des tâches</h1>
+    <div class=" border d-flex justify-content-between">
+        <h2>utilisateur</h2>
+        <h2>Nom tache</h2>
+        <h2>Creation tache</h2>
+        <h2>Parametre</h2>
+     </div>
+    {% for tache in objects %}
+       <div class="d-flex justify-content-between">
+        <p>{{tache.utilisateur}}</p>
+        <p>{{tache.task_name}} </p>
+        <p>{{tache.release_date}}</p>
+        <nav class="d-flex">
+         <a type="button" class="nav-link btn btn-warning" href="/LeModele/taskedit/{{tache.id}}">edit</a>
+            <a type="button" class="nav-link btn btn-danger" href="/LeModele/deletetask/{{tache.id}}">delete</a>
+         </nav>
+         </div>
+    {% endfor %}
+{% endblock %}

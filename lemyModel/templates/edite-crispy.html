@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}
+User {{ pers.first_name }}
+{% endblock %}
+
+{% block navtitle %}
+User {{ pers.first_name }}
+{% endblock %}
+
+{% block header %}
+{% if messages %}
+{% for message in messages %}
+<h3>{{message}}</h3>
+{% endfor %}
+{% endif %}
+{% endblock %}
+
+{% block content %}
+
+<form method="post" action="/LeModele/edit/{{pers.pk}}">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-6">
+            {{ form.first_name|as_crispy_field }}
+        </div>
+        <div class="col-6">
+            {{ form.last_name|as_crispy_field }}
+        </div>
+    </div>
+    <button type="submit" class="btn btn-success">
+        Save User
+    </button>
+</form>
+
+{% endblock %}
